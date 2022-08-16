@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class CharacterControllerMonoRefComponent : IComponentData
 {
- public CharacterController CharacterController;
+ public CharacterController Value;
 }

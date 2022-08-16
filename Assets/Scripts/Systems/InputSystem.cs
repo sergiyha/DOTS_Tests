@@ -8,15 +8,19 @@ namespace Systems
     {
         protected override void OnUpdate()
         {
-            float X_prev = 0;
-            float Y_prev = 0;
-            Entities.ForEach((Entity e, ref AxisInputComponent axisComponent) =>
+            Entities.ForEach((Entity _, ref AxisInputComponent axisComponent, ref MouseInputComponent mouseInput) =>
             {
                 var x = Input.GetAxis("Horizontal");
                 var y = Input.GetAxis("Vertical");
 
+                var xMouse = Input.GetAxis("Mouse X");
+                var yMouse = Input.GetAxis("Mouse Y");
+
+                mouseInput.X = xMouse;
+                mouseInput.Y = yMouse;
                 axisComponent.X = x;
                 axisComponent.Y = y;
+                
             }).WithoutBurst().Run();
         }
     }

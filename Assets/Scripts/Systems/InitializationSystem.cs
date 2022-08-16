@@ -1,18 +1,19 @@
 using Systems;
 using Unity.Entities;
-using UnityEngine;
 
 namespace Initialization
 {
     [UpdateInGroup(typeof(SimulationSystemGroup), OrderFirst = true)]
     public partial class InitializationSystem : SystemBase
     {
+        private World _world;
+
         protected override void OnCreate()
         {
-            var world = World.DefaultGameObjectInjectionWorld;
-            var ecb = world.GetOrCreateSystem<EndInitializationEntityCommandBufferSystem>().CreateCommandBuffer();
+            _world = World.DefaultGameObjectInjectionWorld;
+            var ecb = _world.GetOrCreateSystem<EndInitializationEntityCommandBufferSystem>().CreateCommandBuffer();
             InitInputEntity(ecb);
-            InitSystems(world);
+            InitSystems();
         }
 
         private void InitInputEntity(EntityCommandBuffer ecb)
@@ -20,18 +21,20 @@ namespace Initialization
             var entity = ecb.CreateEntity();
             ecb.SetName(entity, "inputs_entity");
             ecb.AddComponent<AxisInputComponent>(entity);
+            ecb.AddComponent<MouseInputComponent>(entity);
         }
 
-        private void InitSystems(World world)
+        private void InitSystems()
         {
-            CreateSystem<SimulationSystemGroup, InputSystem>(world);
-            CreateSystem<SimulationSystemGroup, MovementSystem>(world);
+            CreateSystem<SimulationSystemGroup, InputSystem>();
+            CreateSystem<SimulationSystemGroup, MovementSystem>();
+            CreateSystem<SimulationSystemGroup, CameraRotationSystem>();
         }
 
-        public void CreateSystem<G, S>(World w) where G : ComponentSystemGroup where S : SystemBase
+        public void CreateSystem<G, S>() where G : ComponentSystemGroup where S : SystemBase
         {
-            var systemGroup = w.GetOrCreateSystem<G>();
-            systemGroup.AddSystemToUpdateList(w.GetOrCreateSystem<S>());
+            var systemGroup = _world.GetOrCreateSystem<G>();
+            systemGroup.AddSystemToUpdateList(_world.GetOrCreateSystem<S>());
         }
 
         protected override void OnUpdate()

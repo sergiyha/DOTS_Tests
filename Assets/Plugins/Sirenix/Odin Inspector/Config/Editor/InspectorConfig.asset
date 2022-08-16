@@ -19,3 +19,5 @@ MonoBehaviour:
     configs:
     - DrawnTypeName: PrefabSpawner, Assembly-CSharp
       EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
+    - DrawnTypeName: PlayerComponentProvider, Assembly-CSharp
+      EditorTypeName: Sirenix.OdinInspector.Editor.OdinEditor, Sirenix.OdinInspector.Editor
