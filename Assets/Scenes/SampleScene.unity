@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 289651567}
   - component: {fileID: 289651566}
   - component: {fileID: 289651565}
+  - component: {fileID: 289651570}
+  - component: {fileID: 289651569}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -242,6 +244,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -0.04, z: 0}
+--- !u!114 &289651569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289651564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8924155a6ec936e42a6ba5138e548b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 289651567}
+--- !u!114 &289651570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289651564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e93e6646982ce45af6e8975f577e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Camera
 --- !u!1 &624483530
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,24 +604,6 @@ Transform:
   m_Father: {fileID: 2073234440}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1419058374 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7390702872157345125, guid: 2923f27a071953946ab8ff3bf2209ada, type: 3}
-  m_PrefabInstance: {fileID: 7390702871214805513}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1419058379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419058374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConversionMode: 0
 --- !u!1 &1489178645
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +752,14 @@ PrefabInstance:
     - target: {fileID: 7390702872157345126, guid: 2923f27a071953946ab8ff3bf2209ada, type: 3}
       propertyPath: ClampMinAngle_camera
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390702872157345126, guid: 2923f27a071953946ab8ff3bf2209ada, type: 3}
+      propertyPath: RotationSpeedX_camera
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390702872157345126, guid: 2923f27a071953946ab8ff3bf2209ada, type: 3}
+      propertyPath: RotationSpeedY_camera
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7390702872157345144, guid: 2923f27a071953946ab8ff3bf2209ada, type: 3}
       propertyPath: m_RootOrder

@@ -23,7 +23,6 @@ public class PlayerComponentProvider : BaseComponentProvider
         ecb.AddComponent(e, new PlayerTagComponent());
         ecb.AddComponent(e, new MovementSpeedComponent { Value = MovemenSpeed });
         ecb.AddComponent(e, new CharacterControllerMonoRefComponent { Value = CharacterController });
-        ecb.AddComponent(e, new CameraMonoRefComponent() { Value = Camera.main });
         ecb.AddComponent(e, new CameraFollowerComponent() { Value = CameraFollower });
         ecb.AddComponent(e, new CameraSettingsComponent()
         {

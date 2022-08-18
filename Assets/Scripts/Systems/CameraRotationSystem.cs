@@ -18,27 +18,13 @@ public partial class CameraRotationSystem : SystemBase
             if (xRotation > cameraSettings.ClampMinAngle && xRotation < cameraSettings.ClampMaxAngle)
             {
                 if (_previousXCameraRotation >= cameraSettings.ClampMaxAngle)
-                {
-                    Debug.LogError("one");
-                    // Debug.LogError($"{xRotation}--{cameraSettings.ClampMinAngle}--{cameraSettings.ClampMaxAngle}");
                     xRotation = cameraSettings.ClampMaxAngle;
-                }
 
 
                 if (_previousXCameraRotation <= cameraSettings.ClampMinAngle)
-                {
-                    Debug.LogError("two");
                     xRotation = cameraSettings.ClampMinAngle;
-                }
             }
-
-
-            //if (!(xRotation > cameraSettings.ClampMaxAngle))
-            //{
-            //    xRotation = cameraSettings.ClampMaxAngle;
-            //}
-
-
+            
             transform.rotation = Quaternion.Euler
             (
                 xRotation,

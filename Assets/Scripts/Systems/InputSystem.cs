@@ -6,6 +6,9 @@ namespace Systems
     [DisableAutoCreation]
     public partial class InputSystem : SystemBase
     {
+        private float prevAxisX = 0;
+        private float prevAxisY = 0;
+
         protected override void OnUpdate()
         {
             Entities.ForEach((Entity _, ref AxisInputComponent axisComponent, ref MouseInputComponent mouseInput) =>
@@ -18,9 +21,12 @@ namespace Systems
 
                 mouseInput.X = xMouse;
                 mouseInput.Y = yMouse;
-                axisComponent.X = x;
-                axisComponent.Y = y;
-                
+
+                //input interpolation
+                prevAxisX = Mathf.Lerp(prevAxisX, x, Time.DeltaTime * 100);
+                prevAxisY = Mathf.Lerp(prevAxisY, y, Time.DeltaTime * 100);
+                axisComponent.X = prevAxisX;
+                axisComponent.Y = prevAxisY;
             }).WithoutBurst().Run();
         }
     }
